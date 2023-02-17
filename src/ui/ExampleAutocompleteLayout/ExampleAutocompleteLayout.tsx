@@ -4,7 +4,7 @@ import styles from './ExampleAutocompleteLayout.module.css';
 
 export interface ExampleAutocompleteProps extends Omit<HTMLProps<HTMLInputElement>, 'onSelect' | 'placeholder'> {
   idKey?: keyof AutocompleteSuggestion
-  nameKey?: keyof AutocompleteSuggestion
+  titleKey?: keyof AutocompleteSuggestion
   placeholder?: string
   error?: Error
   loading?: boolean
@@ -17,7 +17,7 @@ export interface ExampleAutocompleteProps extends Omit<HTMLProps<HTMLInputElemen
 
 export function ExampleAutocompleteLayout({
   idKey = 'id',
-  nameKey = 'name',
+  titleKey = 'title',
   placeholder = 'SEARCH',
   error,
   loading,
@@ -62,7 +62,7 @@ export function ExampleAutocompleteLayout({
                 if (onSelect) onSelect(item);
               }}
             >
-              {item[nameKey]}
+              {item[titleKey]}
             </a>
           )) : 'Nothing found...'}
         </div>

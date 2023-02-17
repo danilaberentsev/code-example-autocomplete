@@ -13,13 +13,12 @@ function Root() {
         placeholder="REMOTE"
         urn="anime"
         idKey="mal_id"
-        nameKey="title"
         dataKey="data"
         onSelect={setActiveRemote}
       />
       <StaticAutocomplete
         placeholder="STATIC"
-        suggestions={['foo', 'bar', 'xzc', 'zox', 'asd', 'qwe', 'lkg'].map((i) => ({ id: i, name: i }))}
+        suggestions={['foo', 'bar', 'xzc', 'zox', 'asd', 'qwe', 'lkg'].map((i) => ({ id: i, title: i }))}
         onSelect={setActiveStatic}
       />
     </div>

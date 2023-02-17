@@ -3,13 +3,13 @@ import { useRemoteAutocomplete, UseRemoteAutocompleteProps } from './useAutocomp
 
 export function RemoteAutocomplete({
   idKey = 'id',
-  nameKey = 'name',
+  titleKey = 'title',
   dataKey,
   searchKey,
   placeholder = 'SEARCH',
   onSelect,
   urn,
-}: Pick<ExampleAutocompleteProps, 'idKey' | 'nameKey' | 'placeholder' | 'onSelect'> & UseRemoteAutocompleteProps) {
+}: Pick<ExampleAutocompleteProps, 'idKey' | 'titleKey' | 'placeholder' | 'onSelect'> & UseRemoteAutocompleteProps) {
   const {
     actions,
     state,
@@ -23,7 +23,7 @@ export function RemoteAutocomplete({
   return (
     <ExampleAutocompleteLayout
       idKey={idKey}
-      nameKey={nameKey}
+      titleKey={titleKey}
       inputRef={inputRef}
       containerRef={containerRef}
       inFocus={state.inFocus}
@@ -34,7 +34,7 @@ export function RemoteAutocomplete({
       onBlur={(e) => { e.preventDefault(); }}
       onChange={(e) => { actions.change({ value: e.currentTarget.value }); }}
       onSelect={(item) => {
-        actions.select({ value: item[nameKey] });
+        actions.select({ value: item[titleKey] });
         if (onSelect) onSelect(item);
       }}
       loading={loading}

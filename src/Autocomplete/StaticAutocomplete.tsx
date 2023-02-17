@@ -7,18 +7,18 @@ interface StaticAutocompleteProps {
 
 export function StaticAutocomplete({
   idKey = 'id',
-  nameKey = 'name',
+  titleKey = 'title',
   placeholder = 'SEARCH',
   onSelect,
   suggestions,
-}: StaticAutocompleteProps & Pick<ExampleAutocompleteProps, 'idKey' | 'nameKey' | 'placeholder' | 'onSelect'>) {
+}: StaticAutocompleteProps & Pick<ExampleAutocompleteProps, 'idKey' | 'titleKey' | 'placeholder' | 'onSelect'>) {
   const { actions, state, inputRef, containerRef } = useAutocomplete();
-  const filteredSuggestions = suggestions.filter((s) => s[nameKey].includes(state.value.trim().toLowerCase()));
+  const filteredSuggestions = suggestions.filter((s) => s[titleKey].includes(state.value.trim().toLowerCase()));
 
   return (
     <ExampleAutocompleteLayout
       idKey={idKey}
-      nameKey={nameKey}
+      titleKey={titleKey}
       inputRef={inputRef}
       containerRef={containerRef}
       inFocus={state.inFocus}
@@ -29,7 +29,7 @@ export function StaticAutocomplete({
       onBlur={(e) => { e.preventDefault(); }}
       onChange={(e) => { actions.change({ value: e.currentTarget.value }); }}
       onSelect={(item) => {
-        actions.select({ value: item[nameKey] });
+        actions.select({ value: item[titleKey] });
         if (onSelect) onSelect(item);
       }}
     />
