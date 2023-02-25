@@ -33,6 +33,7 @@ export function useDebouncedRequest<Data>({ urn = '', dataKey, delay = 500, meth
     return new Promise((resolve) => {
       timerRef.current = setTimeout(() => {
         setLoading(true);
+        setError(null);
         controllerRef.current = new AbortController();
         const requestInit: RequestInit = { signal: controllerRef.current.signal, method };
         let resultUrn = urn;
